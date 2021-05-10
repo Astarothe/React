@@ -1,0 +1,22 @@
+.nav {
+    grid-area: n;
+    background-color: burlywood;
+}
+
+.item {
+    list-style-type: none;
+}
+
+.item a {
+    color: white;
+    text-decoration: none;
+}
+
+.itemSettings {
+    color: white;
+}
+
+.itemSettings a {
+    color: white;
+    text-decoration: none;
+}

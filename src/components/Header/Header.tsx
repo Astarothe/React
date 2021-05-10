@@ -1,6 +1,8 @@
+import head from "./Header.module.css";
+
 const Header = () => {
     return (
-        <header className="header">
+        <header className={head.header}>
             <img
                 src="https://www.pinclipart.com/picdir/big/546-5464333_icon-aperture-aperture-science-logo-clipart.png"
                 alt=""/>
@@ -8,4 +10,4 @@ const Header = () => {
     )
 }
 
-export default  Header;
+export default Header;
