@@ -1,6 +1,10 @@
 import Posts from "./Post.module.css";
 
-const Post = (props: any) => {
+type MessagePropsType = {
+    message: String;
+}
+
+const Post = (props: MessagePropsType) => {
     return (
 
         <div className={Posts.item}>
