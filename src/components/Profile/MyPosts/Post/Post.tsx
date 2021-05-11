@@ -2,6 +2,7 @@ import Posts from "./Post.module.css";
 
 type MessagePropsType = {
     message: String;
+    likesCount: Number;
 }
 
 const Post = (props: MessagePropsType) => {
@@ -11,7 +12,7 @@ const Post = (props: MessagePropsType) => {
             <img className={Posts.userImg} src="https://semantic-ui.com/images/avatar2/large/matthew.png" alt=""/>
             { props.message }
             <div>
-                <span>Like</span>
+                <span>Like</span> { props.likesCount }
             </div>
         </div>
     )
