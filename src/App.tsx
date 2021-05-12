@@ -17,7 +17,7 @@ function App(props: any) {
                 <Navbar/>
                 <div className={"app-wrapper-content"}>
                     <Route exact path={"/profile"} render={ () => <Profile posts={props.posts}/>}/>
-                    <Route exact path={"/dialogs"} render={ () => <Dialogs dialog={props.dialogs} messages={props.messages}/>}/>
+                    <Route exact path={"/dialogs"} render={ () => <Dialogs dialogs={props.dialogs} messages={props.messages}/>}/>
                     <Route exact path={"/news"} render={ () => <News />}/>
                     <Route exact path={"/music"} render={ () =><Music />}/>
                     <Route exact path={"/settings"} render={ () => <Settings />}/>
