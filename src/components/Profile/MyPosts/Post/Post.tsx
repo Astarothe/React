@@ -8,7 +8,6 @@ type MessagePropsType = {
 
 const Post = (props: MessagePropsType) => {
     return (
-
         <div className={Posts.item}>
             <img className={Posts.userImg} src="https://semantic-ui.com/images/avatar2/large/matthew.png" alt=""/>
             { props.message }
