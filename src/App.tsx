@@ -10,9 +10,15 @@ import Music from "./components/Music/Music";
 import News from "./components/News/News";
 
 type AppPropsType = {
-    posts: { id: number, message: string, likesCount: number}[],
-    dialogs: { id: number, name: string }[],
-    messages: { id: number, message: string }[]
+    state: {
+        profilePage: {
+            posts: { id: number, message: string, likesCount: number }[],
+        },
+        dialogsPage: {
+            dialogs: { id: number, name: string }[],
+            messages: { id: number, message: string }[]
+        }
+    }
 }
 
 function App(props: AppPropsType) {
@@ -22,9 +28,9 @@ function App(props: AppPropsType) {
                 <Header/>
                 <Navbar/>
                 <div className={"app-wrapper-content"}>
-                    <Route exact path={"/profile"} render={() => <Profile posts={props.posts}/>}/>
+                    <Route exact path={"/profile"} render={() => <Profile state={props.state.profilePage}/>}/>
                     <Route exact path={"/dialogs"}
-                           render={() => <Dialogs dialogs={props.dialogs} messages={props.messages}/>}/>
+                           render={() => <Dialogs state={props.state.dialogsPage}/>}/>
                     <Route exact path={"/news"} render={() => <News/>}/>
                     <Route exact path={"/music"} render={() => <Music/>}/>
                     <Route exact path={"/settings"} render={() => <Settings/>}/>
