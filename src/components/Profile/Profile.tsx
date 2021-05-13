@@ -3,7 +3,11 @@ import main from "./Profile.module.css";
 import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 
-const Profile = (props: any) => {
+type ProfilePropsType = {
+    posts: { id: number, message: string, likesCount: number}[],
+};
+
+const Profile = (props: ProfilePropsType) => {
 
     return (
         <div>

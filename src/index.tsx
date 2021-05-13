@@ -9,7 +9,7 @@ const posts = [
     {id: 2, message: "It's my first post", likesCount: 19}
 ];
 
-let dialogs = [
+const dialogs = [
     {id: 1, name: "Dimych"},
     {id: 2, name: "Andrew"},
     {id: 3, name: "Sveta"},
@@ -18,7 +18,7 @@ let dialogs = [
     {id: 6, name: "Valera"},
 ];
 
-let messages = [
+const messages = [
     {id: 1, message: "Hi"},
     {id: 2, message: "How is your it-kamasutra?"},
     {id: 3, message: "Yo"},
