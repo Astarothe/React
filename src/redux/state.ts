@@ -22,7 +22,15 @@ let state = {
             {id: 5, message: "Yo"},
             {id: 6, message: "Yo"},
         ]
+    },
+    sidebar: {
+        friends: [
+            {name: "Dimych", avatar: "https://semantic-ui.com/images/avatar2/large/matthew.png"},
+            {name: "Andrew", avatar: "https://semantic-ui.com/images/avatar2/large/matthew.png"},
+            {name: "Sveta", avatar: "https://semantic-ui.com/images/avatar2/large/matthew.png"},
+           ]
     }
+
 };
 
 export default state;

@@ -4,10 +4,11 @@ import Header from "./components/Header/Header"
 import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
 import Dialogs from "./components/Dialogs/Dialogs";
-import {BrowserRouter, Route} from "react-router-dom";
 import Settings from "./components/Settings/Settings";
 import Music from "./components/Music/Music";
 import News from "./components/News/News";
+import {Route} from "react-router-dom";
+
 
 type AppPropsType = {
     state: {
@@ -17,16 +18,19 @@ type AppPropsType = {
         dialogsPage: {
             dialogs: { id: number, name: string }[],
             messages: { id: number, message: string }[]
+        },
+        sidebar: {
+            friends: {name: string, avatar:string}[]
         }
     }
 }
 
 function App(props: AppPropsType) {
     return (
-        <BrowserRouter>
+
             <div className="app-wrapper">
                 <Header/>
-                <Navbar/>
+                <Navbar state={props.state.sidebar}/>
                 <div className={"app-wrapper-content"}>
                     <Route exact path={"/profile"} render={() => <Profile state={props.state.profilePage}/>}/>
                     <Route exact path={"/dialogs"}
@@ -36,7 +40,7 @@ function App(props: AppPropsType) {
                     <Route exact path={"/settings"} render={() => <Settings/>}/>
                 </div>
             </div>
-        </BrowserRouter>
+
     );
 }
 

@@ -1,7 +1,7 @@
 .nav {
     grid-area: n;
     background-color: burlywood;
-    padding: 20px;
+    padding: 10px;
 }
 .item {
     list-style-type: none;
@@ -26,4 +26,18 @@
 .itemSettings a {
     color: white;
     text-decoration: none;
+}
+.friendsList {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    justify-content: space-between;
+}
+.friendsAvatar {
+    width: 50px;
+    border-radius: 50px;
+}
+.friendsName {
+    text-align: center;
+    font-size: 14px;
 }
