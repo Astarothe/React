@@ -13,7 +13,7 @@ import {Route} from "react-router-dom";
 type AppPropsType = {
     state: {
         profilePage: {
-            posts: { id: number, message: string, likesCount: number }[],
+            posts: { id: number, message: string | undefined, likesCount: number }[],
         },
         dialogsPage: {
             dialogs: { id: number, name: string }[],
@@ -23,16 +23,17 @@ type AppPropsType = {
             friends: {name: string, avatar:string}[]
         }
     }
+    addPost: (postMessage: string | undefined ) => void
 }
+
 
 function App(props: AppPropsType) {
     return (
-
             <div className="app-wrapper">
                 <Header/>
                 <Navbar state={props.state.sidebar}/>
                 <div className={"app-wrapper-content"}>
-                    <Route exact path={"/profile"} render={() => <Profile state={props.state.profilePage}/>}/>
+                    <Route exact path={"/profile"} render={() => <Profile state={props.state.profilePage} addPost={props.addPost}/>}/>
                     <Route exact path={"/dialogs"}
                            render={() => <Dialogs state={props.state.dialogsPage}/>}/>
                     <Route exact path={"/news"} render={() => <News/>}/>

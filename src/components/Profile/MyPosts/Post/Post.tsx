@@ -2,8 +2,8 @@ import React from 'react';
 import Posts from "./Post.module.css";
 
 type MessagePropsType = {
-    message: String;
-    likesCount: Number;
+    message: string | undefined;
+    likesCount: number;
 }
 
 const Post = (props: MessagePropsType) => {

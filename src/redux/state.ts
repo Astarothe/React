@@ -1,4 +1,40 @@
-let state = {
+import {rerenderEntireTree} from "../render";
+
+type stateType = {
+    profilePage: {
+        posts: [
+            {id:number, message: string | undefined, likesCount: number},
+            {id:number, message: string | undefined, likesCount: number},
+        ]
+    },
+    dialogsPage: {
+        dialogs: [
+            {id: number, name: string},
+            {id: number, name: string},
+            {id: number, name: string},
+            {id: number, name: string},
+            {id: number, name: string},
+            {id: number, name: string},
+        ],
+        messages: [
+            {id:number, message: string},
+            {id:number, message: string},
+            {id:number, message: string},
+            {id:number, message: string},
+            {id:number, message: string},
+            {id:number, message: string},
+        ]
+    },
+    sidebar: {
+        friends: [
+            {name:string, avatar: string},
+            {name:string, avatar: string},
+            {name:string, avatar: string},
+        ]
+    }
+}
+
+let state: stateType = {
     profilePage: {
         posts: [
             {id: 1, message: "Hi? how are you?", likesCount: 0},
@@ -33,4 +69,13 @@ let state = {
 
 };
 
+export let addPost = (postMessage: string | undefined) => {
+    let newPost = {
+        id: 3,
+        message: postMessage,
+        likesCount: 0
+    };
+    state.profilePage.posts.push(newPost);
+    rerenderEntireTree(state)
+}
 export default state;
