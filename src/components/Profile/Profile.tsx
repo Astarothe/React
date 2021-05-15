@@ -4,10 +4,13 @@ import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 type ProfilePropsType = {
-    state: {
+    profilePage: {
         posts: { id: number, message: string | undefined, likesCount: number}[],
+        newPostText:string | undefined,
     }
-    addPost: (postMessage: string | undefined ) => void,
+    addPost: () => void,
+    updateNewPostText: (newText: string | undefined) => void,
+
 };
 
 const Profile = (props: ProfilePropsType) => {
@@ -15,7 +18,7 @@ const Profile = (props: ProfilePropsType) => {
     return (
         <div>
             <ProfileInfo/>
-            <MyPosts posts={props.state.posts} addPost={props.addPost}/>
+            <MyPosts posts={props.profilePage.posts} newPostText={props.profilePage.newPostText} addPost={props.addPost} updateNewPostText={props.updateNewPostText}/>
         </div>
     )
 }

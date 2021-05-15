@@ -3,27 +3,36 @@ import main from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
 type MyPostsPropsType = {
-    posts: { likesCount: number, id: number, message: string | undefined }[];
-    addPost: (postMessage: string | undefined) => void
+    posts: { likesCount: number, id: number, message: string | undefined }[],
+    addPost: () => void,
+    newPostText: string | undefined,
+    updateNewPostText : (newText: string | undefined) => void
 };
 
 const MyPosts = (props: MyPostsPropsType) => {
 
     const postsElements = props.posts.map((p:{likesCount: number, message:string | undefined }) => <Post message={p.message} likesCount={p.likesCount}/>)
 
+    let newPostElement: React.RefObject<HTMLTextAreaElement> = React.createRef();
+
     let addPost = () => {
-        let text = newPostElement.current?.value;
-        props.addPost(text);
+        props.addPost();
+
     };
 
-    let newPostElement: React.RefObject<HTMLTextAreaElement> = React.createRef();
+    let onPostChange = () => {
+        let text = newPostElement.current?.value;
+        props.updateNewPostText(text);
+    }
+
+
 
     return (
         <div className={main.postsBlock}>
             <h3>My posts</h3>
             <div>
                 <div>
-                    <textarea ref={newPostElement} name="" id=""></textarea>
+                    <textarea onChange={onPostChange} ref={newPostElement} value={props.newPostText} name="" id="" />
                 </div>
                 <div>
                     <button onClick={addPost}>Add post</button>

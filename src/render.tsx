@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
-import {addPost} from "./redux/state";
+import {addPost, updateNewPostText} from "./redux/state";
 
 type stateType = {
     profilePage: {
@@ -11,6 +11,7 @@ type stateType = {
             {id:number, message: string | undefined, likesCount: number},
             {id:number, message: string | undefined, likesCount: number},
         ]
+        newPostText: string | undefined
     },
     dialogsPage: {
         dialogs: [
@@ -43,7 +44,7 @@ export let rerenderEntireTree = (state: stateType) => {
     ReactDOM.render(
         <React.StrictMode>
             <BrowserRouter>
-                <App state={state} addPost={addPost}/>
+                <App state={state} addPost={addPost} updateNewPostText={updateNewPostText}/>
             </BrowserRouter>
         </React.StrictMode>,
         document.getElementById('root')

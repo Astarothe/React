@@ -14,6 +14,7 @@ type AppPropsType = {
     state: {
         profilePage: {
             posts: { id: number, message: string | undefined, likesCount: number }[],
+            newPostText:string | undefined,
         },
         dialogsPage: {
             dialogs: { id: number, name: string }[],
@@ -23,7 +24,8 @@ type AppPropsType = {
             friends: {name: string, avatar:string}[]
         }
     }
-    addPost: (postMessage: string | undefined ) => void
+    addPost: () => void,
+    updateNewPostText: (newText: string | undefined) => void,
 }
 
 
@@ -33,7 +35,7 @@ function App(props: AppPropsType) {
                 <Header/>
                 <Navbar state={props.state.sidebar}/>
                 <div className={"app-wrapper-content"}>
-                    <Route exact path={"/profile"} render={() => <Profile state={props.state.profilePage} addPost={props.addPost}/>}/>
+                    <Route exact path={"/profile"} render={() => <Profile profilePage={props.state.profilePage} addPost={props.addPost} updateNewPostText={props.updateNewPostText}/>}/>
                     <Route exact path={"/dialogs"}
                            render={() => <Dialogs state={props.state.dialogsPage}/>}/>
                     <Route exact path={"/news"} render={() => <News/>}/>
