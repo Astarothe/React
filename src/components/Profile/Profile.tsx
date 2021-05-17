@@ -8,8 +8,7 @@ type ProfilePropsType = {
         posts: { id: number, message: string | undefined, likesCount: number}[],
         newPostText:string | undefined,
     }
-    addPost: () => void,
-    updateNewPostText: (newText: string | undefined) => void,
+    dispatch(action:object) : void,
 
 };
 
@@ -18,7 +17,7 @@ const Profile = (props: ProfilePropsType) => {
     return (
         <div>
             <ProfileInfo/>
-            <MyPosts posts={props.profilePage.posts} newPostText={props.profilePage.newPostText} addPost={props.addPost} updateNewPostText={props.updateNewPostText}/>
+            <MyPosts posts={props.profilePage.posts} newPostText={props.profilePage.newPostText}  dispatch={props.dispatch}/>
         </div>
     )
 }

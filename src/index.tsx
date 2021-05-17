@@ -1,61 +1,59 @@
 import reportWebVitals from './reportWebVitals';
-import state, {subscribe} from "./redux/state";
+import store from "./redux/state";
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { BrowserRouter } from 'react-router-dom';
-import {addPost, updateNewPostText} from "./redux/state";
+import {BrowserRouter} from 'react-router-dom';
 
 type stateType = {
     profilePage: {
         posts: [
-            {id:number, message: string | undefined, likesCount: number},
-            {id:number, message: string | undefined, likesCount: number},
+            { id: number, message: string | undefined, likesCount: number },
+            { id: number, message: string | undefined, likesCount: number },
         ]
         newPostText: string | undefined
     },
     dialogsPage: {
         dialogs: [
-            {id: number, name: string},
-            {id: number, name: string},
-            {id: number, name: string},
-            {id: number, name: string},
-            {id: number, name: string},
-            {id: number, name: string},
+            { id: number, name: string },
+            { id: number, name: string },
+            { id: number, name: string },
+            { id: number, name: string },
+            { id: number, name: string },
+            { id: number, name: string },
         ],
         messages: [
-            {id:number, message: string},
-            {id:number, message: string},
-            {id:number, message: string},
-            {id:number, message: string},
-            {id:number, message: string},
-            {id:number, message: string},
+            { id: number, message: string },
+            { id: number, message: string },
+            { id: number, message: string },
+            { id: number, message: string },
+            { id: number, message: string },
+            { id: number, message: string },
         ]
     },
     sidebar: {
         friends: [
-            {name:string, avatar: string},
-            {name:string, avatar: string},
-            {name:string, avatar: string},
+            { name: string, avatar: string },
+            { name: string, avatar: string },
+            { name: string, avatar: string },
         ]
     }
 }
 
-let rerenderEntireTree = () => {
+let rerenderEntireTree = (state: any) => {
     ReactDOM.render(
         <React.StrictMode>
             <BrowserRouter>
-                <App state={state} addPost={addPost} updateNewPostText={updateNewPostText}/>
+                <App state={state} dispatch={store.dispatch.bind(store)}/>
             </BrowserRouter>
         </React.StrictMode>,
         document.getElementById('root')
     );
 }
+rerenderEntireTree(store.getState());
 
-rerenderEntireTree();
-
-subscribe(rerenderEntireTree);
+store.subscribe(rerenderEntireTree);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
