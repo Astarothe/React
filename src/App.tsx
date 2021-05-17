@@ -11,37 +11,29 @@ import {Route} from "react-router-dom";
 
 
 type AppPropsType = {
-    state: {
-        profilePage: {
-            posts: { id: number, message: string | undefined, likesCount: number }[],
-            newPostText:string | undefined,
-        },
-        dialogsPage: {
-            dialogs: { id: number, name: string }[],
-            messages: { id: number, message: string }[]
-        },
-        sidebar: {
-            friends: {name: string, avatar:string}[]
-        }
-    }
-    dispatch(action:object) : void,
+    store: any,
+    dispatch(action: object): void,
+
 }
 
 
 function App(props: AppPropsType) {
     return (
-            <div className="app-wrapper">
-                <Header/>
-                <Navbar state={props.state.sidebar}/>
-                <div className={"app-wrapper-content"}>
-                    <Route exact path={"/profile"} render={() => <Profile profilePage={props.state.profilePage} dispatch={props.dispatch}/>}/>
-                    <Route exact path={"/dialogs"}
-                           render={() => <Dialogs state={props.state.dialogsPage}/>}/>
-                    <Route exact path={"/news"} render={() => <News/>}/>
-                    <Route exact path={"/music"} render={() => <Music/>}/>
-                    <Route exact path={"/settings"} render={() => <Settings/>}/>
-                </div>
+        <div className="app-wrapper">
+
+            <Header />
+            <Navbar state={props.store._state.sidebar}/>
+            <div className={"app-wrapper-content"}>
+                <Route exact path={"/profile"}
+                       render={() => <Profile profilePage={props.store._state.profilePage} dispatch={props.dispatch}/>}/>
+                <Route exact path={"/dialogs"}
+                       render={() => <Dialogs dispatch={props.dispatch}
+                                              store={props.store}/>}/>
+                <Route exact path={"/news"} render={() => <News/>}/>
+                <Route exact path={"/music"} render={() => <Music/>}/>
+                <Route exact path={"/settings"} render={() => <Settings/>}/>
             </div>
+        </div>
 
     );
 }
